@@ -1,0 +1,6 @@
+defaultMenu = 
+  button: [
+    # add your button menu here
+  ]
+
+module.exports.defaultMenu = defaultMenu

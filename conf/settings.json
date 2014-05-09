@@ -1,0 +1,11 @@
+{
+    "appid": "wxae5634fc206cf964",
+    "appsecret": "ad0358eea8d5e2a04e69869222b65a96",
+    "token": "wechatxbk0577",
+
+    "wechatlog": "wechat.log.",
+
+    "dbox_app_key": "z23fow2wz8qgvbo",
+    "dbox_app_secret": "rlekan3vt1s5ifw",
+    "dbox_access_token": {"oauth_token_secret":"hngb97vqnl1ffmt","oauth_token":"oxqd1suveq91nat1","uid":"12985385"}
+}

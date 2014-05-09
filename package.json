@@ -1,0 +1,27 @@
+{
+  "name": "xbk0577",
+  "description": "xbk0577 app",
+  "version": "0.0.1",
+  "author": "xbk0577",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "express": "~4.0.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "jade": "~1.3.0",
+    "coffee-script": "1.7.x",
+    "wechat": "0.6.x",
+    "winston": "~0.7.3",
+    "dbox": "~0.6.3"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  }
+}
