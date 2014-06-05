@@ -50,22 +50,52 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', wechat(token, wechat.text(function(message, req, res, next) {
-  var messageString;
+  var content, host, img, messageString, protocol;
   if (wechat.checkSignature(req.query, token)) {
     dboxlog(message);
     logger.info(message);
+    messageString = JSON.stringify(message);
     if (/^menu:reset$/.test(message.Content)) {
       api.createMenu(defaultMenu, function(err, result) {
         return console.log(result);
       });
+    } else if (/^title$/.test(message.Content)) {
+      protocol = req.protocol;
+      host = req.get('host');
+      img = protocol + '://' + host + '/images/tux.jpg';
+      console.log(img);
+      content = [
+        {
+          title: 'My title',
+          description: messageString,
+          picurl: img,
+          url: 'http://www.baidu.com'
+        }
+      ];
+      return res.reply(content);
     }
-    messageString = JSON.stringify(message);
     return res.reply(messageString + '\n<a href="http://www.baidu.com/">商城</a>');
   } else {
     logger.warn('Not from wechat server!');
     return next();
   }
 }).image(function(message, req, res) {
+  if (wechat.checkSignature(req.query, token)) {
+    dboxlog(message);
+    logger.info(message);
+    return res.reply(JSON.stringify(message));
+  } else {
+    return next();
+  }
+}).voice(function(message, req, res) {
+  if (wechat.checkSignature(req.query, token)) {
+    dboxlog(message);
+    logger.info(message);
+    return res.reply(JSON.stringify(message));
+  } else {
+    return next();
+  }
+}).video(function(message, req, res) {
   if (wechat.checkSignature(req.query, token)) {
     dboxlog(message);
     logger.info(message);
@@ -81,7 +111,7 @@ router.post('/', wechat(token, wechat.text(function(message, req, res, next) {
   } else {
     return next();
   }
-}).voice(function(message, req, res) {
+}).link(function(message, req, res) {
   if (wechat.checkSignature(req.query, token)) {
     dboxlog(message);
     logger.info(message);
